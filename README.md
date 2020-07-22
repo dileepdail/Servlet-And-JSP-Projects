@@ -92,6 +92,15 @@ A servlet is a small Java program that runs within a Web server. Servlets receiv
 
 3. Restart the server and test the html form with two numbers.
 
+## GET & POST Method
+
+In place of service() method we can write two menthos doGet():will only accept GET requests and doPost(): will accept only POST requests  
+Before calling doGet or doPost Servlet will first call service() method and then from the service method these two methods will be called.
+
+## RequestDispatcher | Calling a Servlet from Servlet
+
+
+
     
             
     
