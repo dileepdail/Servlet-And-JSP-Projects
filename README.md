@@ -1,4 +1,4 @@
-# Servlet-and-JSP
+# Servlet Cocepts and Demo Code
 
 ## Servlet Introduction
 
