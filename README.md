@@ -4,7 +4,7 @@
 
 A servlet is a small Java program that runs within a Web server. Servlets receive and respond to requests from Web clients, usually across HTTP, the HyperText Transfer Protocol.
 
-## Installation
+## Configure Tomcat in Eclipse
 
 1. Install and open Eclipse
 2. Configure Tomcat server in Eclipse  
@@ -16,5 +16,17 @@ A servlet is a small Java program that runs within a Web server. Servlets receiv
     In case of no error click Finish
 3. Verify the server by click on start
 
-## Create the Servlet Project
+## Creating Web Project in Eclipse
+
+1. Click new project. Select Dynamic Web Project
+2. Enter Project name
+3. Select generate web.xmldeployment descriptor
+4. Finish
+5. Right click and select create new html page
+6. Enter some text in the file like "Hello World"
+7. Run the project as a server.
+
+## Create Servlet & Web.xml
+
+
     
