@@ -50,6 +50,10 @@ A servlet is a small Java program that runs within a Web server. Servlets receiv
     HttpServletRequest req and HttpServletResponse resp  
     
             package com.dileep;
+
+            import java.io.IOException;
+            import java.io.PrintWriter;
+
             import javax.servlet.http.HttpServlet;
             import javax.servlet.http.HttpServletRequest;
             import javax.servlet.http.HttpServletResponse;
@@ -61,19 +65,20 @@ A servlet is a small Java program that runs within a Web server. Servlets receiv
                  */
                 private static final long serialVersionUID = 1L;
 
-                public void service(HttpServletRequest req, HttpServletResponse resp) {
+                public void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
                     int num1 = Integer.parseInt(req.getParameter("num1"));
                     int num2 = Integer.parseInt(req.getParameter("num2"));
 
                     int sum = num1 + num2;
 
-                    System.out.println("sum: "+sum);
+                    PrintWriter out = resp.getWriter();
+
+                    out.println("sum of the numbers is: "+sum);
 
                 }
 
             }
-
 
 
 2. Open web.xml file in WEB-INF floder and add the servlet and servlet-mapping
@@ -88,7 +93,7 @@ A servlet is a small Java program that runs within a Web server. Servlets receiv
             <url-pattern>/add</url-pattern>
         </servlet-mapping>
 
-3. Restart the server and test the html page
+3. Restart the server and test the html form with two numbers.
 
     
             
