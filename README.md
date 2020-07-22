@@ -171,6 +171,81 @@ Save the value in seesion using HttpSession or Cookie
 		if(cookie.getName().equals("sum"))
 			sum = Integer.parseInt(cookie.getValue());
 	}
+	
+## ServletConfig & ServletContext
+
+###### Difference between ServletConfig and ServletContext in Java Servlet
+
+ServletConfig and ServletContext, both are objects created at the time of servlet initialization  
+and used to provide some initial parameters or configuration information to the servlet.   
+But, the difference lies in the fact that information shared by ServletConfig is for a specific servlet,  
+while information shared by ServletContext is available for all servlets in the web application.
+
+###### Code for ServletContext
+
+	web.xml
+	===============
+	
+	<servlet>
+		<servlet-name>MyServlet</servlet-name>
+		<servlet-class>com.dileep.MyServlet</servlet-class>
+
+		<init-param>
+			<param-name>name</param-name>
+			<param-value>Dileep Dail</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>MyServlet</servlet-name>
+		<url-pattern>/myServlet</url-pattern>
+	</servlet-mapping>
+
+	<context-param>
+		<param-name>name</param-name>
+		<param-value>Dileep</param-value>
+	</context-param>
+	
+	MyServlet.java
+	==================
+	
+	package com.dileep;
+
+	import java.io.IOException;
+	import java.io.PrintWriter;
+
+	import javax.servlet.ServletConfig;
+	import javax.servlet.ServletContext;
+	import javax.servlet.http.HttpServlet;
+	import javax.servlet.http.HttpServletRequest;
+	import javax.servlet.http.HttpServletResponse;
+
+	public class MyServlet extends HttpServlet {
+
+		private static final long serialVersionUID = 1L;
+
+		public void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+			//Common for all the Servlets
+			ServletContext serCont = getServletContext();
+
+			String name = serCont.getInitParameter("name");
+
+			PrintWriter out = resp.getWriter();
+			out.println("Hello "+name);
+
+			//Specific to this servlet
+			ServletConfig serConfg = getServletConfig();
+
+			String fullName = serConfg.getInitParameter("name");
+
+			out.println("Hello "+fullName);
+		}
+
+	}
+
+
+
 
 
 
