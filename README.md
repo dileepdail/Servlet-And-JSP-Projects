@@ -60,9 +60,6 @@ A servlet is a small Java program that runs within a Web server. Servlets receiv
 
         public class AddServlet extends HttpServlet {
 
-            /**
-             * 
-             */
             private static final long serialVersionUID = 1L;
 
             public void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
