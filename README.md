@@ -27,6 +27,11 @@ A servlet is a small Java program that runs within a Web server. Servlets receiv
 7. Run the project as a server.
 
 ## Create Servlet & Web.xml
-
+1. Create Servlet
+    Right click pn project. Select Class. Enter class name  
+    Add "extends HttpServlet" to make your class servlet class  
+    Add and implement service method to your servlet class with request and response object HttpServletRequest req, HttpServletResponse resp
+            
+    
 
     
