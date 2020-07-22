@@ -23,14 +23,74 @@ A servlet is a small Java program that runs within a Web server. Servlets receiv
 3. Select generate web.xmldeployment descriptor
 4. Finish
 5. Right click and select create new html page
-6. Enter some text in the file like "Hello World"
+6. Add form with two input text box and action
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="ISO-8859-1">
+        <title>Add Numbers Form</title>
+        </head>
+        <body>
+        <form name="addForm" action="add">
+            Enter first number: <input type="text" name = "num1"><br><br>
+            Enter Second number: <input type="text" name = "num2"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+
+        </body>
+        </html>
 7. Run the project as a server.
 
 ## Create Servlet & Web.xml
 1. Create Servlet
     Right click pn project. Select Class. Enter class name  
     Add "extends HttpServlet" to make your class servlet class  
-    Add and implement service method to your servlet class with request and response object HttpServletRequest req, HttpServletResponse resp
+    Add and implement service method to your servlet class with request and response object  
+    HttpServletRequest req and HttpServletResponse resp  
+    
+            package com.dileep;
+            import javax.servlet.http.HttpServlet;
+            import javax.servlet.http.HttpServletRequest;
+            import javax.servlet.http.HttpServletResponse;
+
+            public class AddServlet extends HttpServlet {
+
+                /**
+                 * 
+                 */
+                private static final long serialVersionUID = 1L;
+
+                public void service(HttpServletRequest req, HttpServletResponse resp) {
+
+                    int num1 = Integer.parseInt(req.getParameter("num1"));
+                    int num2 = Integer.parseInt(req.getParameter("num2"));
+
+                    int sum = num1 + num2;
+
+                    System.out.println("sum: "+sum);
+
+                }
+
+            }
+
+
+
+2. Open web.xml file in WEB-INF floder and add the servlet and servlet-mapping
+
+        <servlet>
+            <servlet-name>addNumber</servlet-name>
+            <servlet-class>com.dileep.AddServlet</servlet-class>
+        </servlet>
+
+        <servlet-mapping>
+            <servlet-name>addNumber</servlet-name>
+            <url-pattern>/add</url-pattern>
+        </servlet-mapping>
+
+3. Restart the server and test the html page
+
+    
             
     
 
