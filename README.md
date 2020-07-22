@@ -247,7 +247,7 @@ while information shared by ServletContext is available for all servlets in the 
 ## Servlet Annotation Configuration
 
 Remove the servlet configuration from web.xml  
-And add @WebServlet("/nameOFServlet") annotation to the Servlet class
+And add @WebServlet("/nameOfServlet") annotation to the Servlet class
 
 
 
