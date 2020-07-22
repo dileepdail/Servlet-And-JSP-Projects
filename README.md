@@ -137,6 +137,41 @@ In Nutshell, Processing done at server side.
 	
 ## HttpSession | Cookie
 
+Save the value in seesion using HttpSession or Cookie
+
+###### Code for HttpSession
+	
+	AddServlet.java
+	===============
+	
+	HttpSession session = req.getSession();
+	session.setAttribute("sum", sum);
+	resp.sendRedirect("square");
+	
+	SquareServlet.java
+	==================
+	
+	HttpSession session = req.getSession();	
+	int sum = (int) session.getAttribute("sum");
+	
+###### Code for Cookie
+
+	AddServlet.java
+	===============
+	
+	Cookie cookie = new Cookie("sum", ""+sum);
+	resp.addCookie(cookie);
+	resp.sendRedirect("square");
+	
+	SquareServlet.java
+	==================
+	
+	Cookie cookies [] = req.getCookies();
+	for(Cookie cookie: cookies) {
+		if(cookie.getName().equals("sum"))
+			sum = Integer.parseInt(cookie.getValue());
+	}
+
 
 
 
