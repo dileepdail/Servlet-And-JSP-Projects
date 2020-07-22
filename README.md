@@ -131,9 +131,12 @@ Servlet will internally forward the request to another servlet or jsp page.
 End user don’t know that which page is processed internally.  
 In Nutshell, Processing done at server side.
 
-###### Code
+###### Code with URL Rewriting
 
-	resp.sendRedirect("square");
+	resp.sendRedirect("square?sum="+sum);
+	
+## HttpSession | Cookie
+
 
 
 
