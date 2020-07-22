@@ -49,6 +49,7 @@ A servlet is a small Java program that runs within a Web server. Servlets receiv
     Add and implement service method to your servlet class with request and response object  
     HttpServletRequest req and HttpServletResponse resp  
     
+###### Code
         package com.dileep;
 
         import java.io.IOException;
@@ -79,7 +80,7 @@ A servlet is a small Java program that runs within a Web server. Servlets receiv
 
 
 2. Open web.xml file in WEB-INF floder and add the servlet and servlet-mapping
-
+###### Code
         <servlet>
             <servlet-name>addNumber</servlet-name>
             <servlet-class>com.dileep.AddServlet</servlet-class>
@@ -103,12 +104,41 @@ Calling the Servlet from another Servlet
 1. Create one more Servlet squareServlet
 2. add the entry in web.xml file
 3. Add code in addServlet to call the squareServlet
-        
+###### Code        
         req.setAttribute("sum", sum);
 		
 		RequestDispatcher rd = req.getRequestDispatcher("square");
 		rd.forward(req, resp);
 4. Restart and test the form
+
+## sendRedirect | URL Rewriting
+
+###### difference in SendRedirect() and RequestDispatcher() in Servlet
+From: https://www.jitendrazaa.com/blog/java/servlet/difference-in-sendredirect-and-requestdispatcher-in-servlet/
+
+###### SendRedirect
+
+This is the method of object HttpServlerResponse.  
+Request is redirected to client (Browser), and it will process the new URL.  
+End User can see on which page, url is redirected.  
+In Nutshell, Processing done at client side.  
+
+
+###### RequestDispatcher
+
+This object can be accessed from HttpServletRequest.  
+Servlet will internally forward the request to another servlet or jsp page.  
+End user don’t know that which page is processed internally.  
+In Nutshell, Processing done at server side.
+
+###### Code
+
+	resp.sendRedirect("square");
+
+
+
+
+
 
 
 
