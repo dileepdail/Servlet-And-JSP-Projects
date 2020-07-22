@@ -99,6 +99,20 @@ Before calling doGet or doPost Servlet will first call service() method and then
 
 ## RequestDispatcher | Calling a Servlet from Servlet
 
+Calling the Servlet from another Servlet
+1. Create one more Servlet squareServlet
+2. add the entry in web.xml file
+3. Add code in addServlet to call the squareServlet
+        
+        req.setAttribute("sum", sum);
+		
+		RequestDispatcher rd = req.getRequestDispatcher("square");
+		rd.forward(req, resp);
+4. Restart and test the form
+
+
+
+
 
 
     
