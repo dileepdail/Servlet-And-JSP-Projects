@@ -342,6 +342,132 @@ web.xml
 	</filter-mapping>  
 
 	</web-app>
+	
+## File Upload in Java Servlet
+
+*Add cos.jar in the project
+
+###### Example Code
+
+FileUploadServlet.java
+
+	package com.dileep;
+
+	import javax.servlet.http.HttpServlet;
+	import java.io.*;  
+	import javax.servlet.ServletException;  
+	import javax.servlet.http.*;  
+	import com.oreilly.servlet.MultipartRequest;  
+
+	public class FileUploadServlet extends HttpServlet {
+
+		private static final long serialVersionUID = 1L;
+
+		public void doPost(HttpServletRequest request, HttpServletResponse response)  
+			    throws ServletException, IOException {  
+
+			response.setContentType("text/html");  
+			PrintWriter out = response.getWriter();  
+
+			MultipartRequest m=new MultipartRequest(request,"c:/Dileep/fulltime");  
+			out.print("successfully uploaded");
+		}
+	}
+
+web.xml
+
+	<servlet>  
+		<servlet-name>UploadServlet</servlet-name>  
+		<servlet-class>com.dileep.FileUploadServlet</servlet-class>  
+	</servlet>  
+
+	<servlet-mapping>  
+		<servlet-name>UploadServlet</servlet-name>  
+		<url-pattern>/upload</url-pattern>  
+	</servlet-mapping>
+	
+uploadFile.html
+
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<meta charset="ISO-8859-1">
+	<title>File Upload</title>
+	</head>
+	<body>
+		<form action="upload" method="post" enctype="multipart/form-data">  
+			Select File:<input type="file" name="fname"/><br/>  
+			<input type="submit" value="upload"/>  
+		</form>  
+	</body>
+	</html>
+
+## File Download in Java Servlet
+
+###### Example Code
+
+DownloadServlet.java
+
+	package com.dileep;
+
+	import java.io.*;  
+	import javax.servlet.ServletException;   
+
+	public class FileDownloadServlet extends HttpServlet {
+
+		private static final long serialVersionUID = 1L;
+
+		public void doGet(HttpServletRequest request, HttpServletResponse response)  
+		    throws ServletException, IOException {  
+
+			response.setContentType("text/html");  
+			PrintWriter out = response.getWriter();  
+
+			String filename = "index.html";   
+			String filepath = "c:/Dileep/fulltime//";   
+
+			response.setContentType("APPLICATION/OCTET-STREAM");   
+			response.setHeader("Content-Disposition","attachment; filename=\"" + filename + "\"");   
+
+			FileInputStream fileInputStream = new FileInputStream(filepath + filename);  
+
+			int i;   
+			while ((i=fileInputStream.read()) != -1) {  
+			out.write(i);   
+			}   
+			fileInputStream.close();   
+			out.close();   
+		}  
+	}
+  
+
+downloadFile.html
+
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<meta charset="ISO-8859-1">
+	<title>File Download</title>
+	</head>
+	<body>
+		<a href="DownloadServlet">download the file</a>  
+	</body>
+	</html>
+	
+web.xml
+
+	<servlet>  
+		<servlet-name>DownloadServlet</servlet-name>  
+		<servlet-class>com.dileep.FileDownloadServlet</servlet-class>  
+	</servlet>  
+
+	<servlet-mapping>  
+		<servlet-name>DownloadServlet</servlet-name>  
+		<url-pattern>/DownloadServlet</url-pattern>  
+	</servlet-mapping>
+	
+	
+	
 
 # JSP Cocepts and Demo Code
 
