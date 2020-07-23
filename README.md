@@ -345,18 +345,17 @@ The JSP taglib directive is used to define a tag library that defines many tags.
 
 There are 9 jsp implicit objects. These objects are created by the web container that are available to all the jsp pages.  
 
-   Object		Type
-============================================
-1. out			JspWriter
-2. request		HttpServletRequest
-3. response		HttpServletResponse
-4. config		ServletConfig
-5. application		ServletContext
-6. session		HttpSession
-7. pageContext		PageContext
-8. page			Object
-9. exception		Throwable
-============================================
+   Object | Type
+------------ | -------------
+1. out | JspWriter
+2. request | HttpServletRequest
+3. response | HttpServletResponse
+4. config | ServletConfig
+5. application | ServletContext
+6. session | HttpSession
+7. pageContext | PageContext
+8. page | Object
+9. exception | Throwable
 
 
 
