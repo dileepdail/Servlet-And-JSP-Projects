@@ -250,6 +250,98 @@ Remove the servlet configuration from web.xml
 And add @WebServlet("/nameOfServlet") annotation to the Servlet class
 
 
+## Servlet Filter
+
+*From https://www.javatpoint.com/servlet-filter
+
+A filter is an object that is invoked at the preprocessing and postprocessing of a request.  
+
+It is mainly used to perform filtering tasks such as conversion, logging, compression, encryption and decryption, input validation etc.  
+
+The servlet filter is pluggable, i.e. its entry is defined in the web.xml file, if we remove the entry of filter from the web.xml file,  
+filter will be removed automatically and we don't need to change the servlet.
+
+The javax.servlet package contains the three interfaces of Filter API.
+1. Filter
+2. FilterChain
+3. FilterConfig
+
+###### Filter interface provides the life cycle methods for a filter.
+
+* public void init(FilterConfig config)
+* public void doFilter(HttpServletRequest request,HttpServletResponse response, FilterChain chain)
+* public void destroy()
+
+###### Sample Filter Example
+
+MyFilter.java
+
+	import java.io.IOException;  
+	import java.io.PrintWriter;  
+
+	import javax.servlet.*;  
+
+	public class MyFilter implements Filter{  
+
+	public void init(FilterConfig arg0) throws ServletException {}  
+
+	public void doFilter(ServletRequest req, ServletResponse resp,  
+	    FilterChain chain) throws IOException, ServletException {  
+
+	    PrintWriter out=resp.getWriter();  
+	    out.print("filter is invoked before");  
+
+	    chain.doFilter(req, resp);//sends request to next resource  
+
+	    out.print("filter is invoked after");  
+	    }  
+	    public void destroy() {}  
+	}  
+	
+HelloServlet.java
+
+	import java.io.IOException;  
+	import java.io.PrintWriter;  
+
+	import javax.servlet.ServletException;  
+	import javax.servlet.http.*;  
+
+	public class HelloServlet extends HttpServlet {  
+	    public void doGet(HttpServletRequest request, HttpServletResponse response)  
+		    throws ServletException, IOException {  
+
+		response.setContentType("text/html");  
+		PrintWriter out = response.getWriter();  
+
+		out.print("<br>welcome to servlet<br>");  
+	    }  
+	}  
+	
+web.xml
+
+	<web-app>  
+  
+	<servlet>  
+	<servlet-name>s1</servlet-name>  
+	<servlet-class>HelloServlet</servlet-class>  
+	</servlet>  
+
+	<servlet-mapping>  
+	<servlet-name>s1</servlet-name>  
+	<url-pattern>/servlet1</url-pattern>  
+	</servlet-mapping>  
+
+	<filter>  
+	<filter-name>f1</filter-name>  
+	<filter-class>MyFilter</filter-class>  
+	</filter>  
+
+	<filter-mapping>  
+	<filter-name>f1</filter-name>  
+	<url-pattern>/servlet1</url-pattern>  
+	</filter-mapping>  
+
+	</web-app>
 
 # JSP Cocepts and Demo Code
 
@@ -434,6 +526,11 @@ There JSTL mainly provides five types of tags:
 
 	</body>  
 	</html> 
+	
+	
+
+
+
 	
 
 
