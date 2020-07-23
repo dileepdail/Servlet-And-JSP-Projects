@@ -251,10 +251,20 @@ And add @WebServlet("/nameOfServlet") annotation to the Servlet class
 
 
 
+# JSP Cocepts and Demo Code
 
+## JSP Introduction
 
-
-
+###### https://www.geeksforgeeks.org/introduction-to-jsp/
+* It stands for Java Server Pages.
+* It is a server side technology.
+* It is used for creating web application.
+* It is used to create dynamic web content.
+* In this JSP tags are used to insert JAVA code into HTML pages.
+* It is an advanced version of Servlet Technology.
+* It is a Web based technology helps us to create dynamic and platform independent web pages.
+* In this, Java code can be inserted in HTML/ XML pages or both.
+* JSP is first converted into servlet by JSP container before processing the client’s request.
 
 
 
