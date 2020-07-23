@@ -278,11 +278,7 @@ There are four main section in JSP page:
 
 2. Declaration:
 
-<%!     
-int i = 0;  
-}  
-
-converts to class variable in Servlet
+<%! int i = 0; }  converts to class variable in Servlet
 
 3. Scriptlet:
 
