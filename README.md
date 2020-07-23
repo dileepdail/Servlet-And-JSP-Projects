@@ -1,4 +1,4 @@
-# Servlet Cocepts and Demo Code
+# Servlet Concepts and Demo Code
 
 ## Servlet Introduction
 
@@ -469,7 +469,7 @@ web.xml
 	
 	
 
-# JSP Cocepts and Demo Code
+# JSP Concepts and Demo Code
 
 ## JSP Introduction
 
