@@ -358,6 +358,91 @@ No. | Object | Type
 9 | exception | Throwable
 
 
+## Exception Handling in JSP
+
+First method is to write code in Try Catch block But its not recommended  
+Second we can create one error.jsp page and include it in jsp page  
+
+	<%@ page errorPage="error.jsp" %>
+
+And in error.jsp page include following code:
+
+	<%@ page isErrorPage="true" %>  
+  
+	<h3>Sorry an exception occured!</h3>  
+
+	Exception is: <%= exception %>  
+	
+
+## JST (JSP Standard Tag Library)
+
+*From https://www.javatpoint.com/jstl
+
+The JSP Standard Tag Library (JSTL) represents a set of tags to simplify the JSP development.
+
+###### Advantage of JSTL
+1. Fast Development JSTL provides many tags that simplify the JSP.
+2. Code Reusability We can use the JSTL tags on various pages.
+3. No need to use scriptlet tag It avoids the use of scriptlet tag.
+
+*For creating JSTL application, you need to load the jstl.jar file.
+
+There JSTL mainly provides five types of tags:
+1. Core tags
+2. Function tags
+3. SQL tags
+4. Formatting tags
+5. XML tags
+
+###### Sample Code
+
+	<%@ page import="java.io.*,java.util.*,java.sql.*"%>  
+	<%@ page import="javax.servlet.http.*,javax.servlet.*" %>  
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>  
+
+	<html>  
+	<head>  
+	<title>sql:query Tag</title>  
+	</head>  
+	<body>  
+
+	<sql:setDataSource var="db" driver="com.mysql.jdbc.Driver"  
+	     url="jdbc:mysql://localhost/test"  
+	     user="root"  password="1234"/>  
+
+	<sql:query dataSource="${db}" var="rs">  
+	SELECT * from Students;  
+	</sql:query>  
+
+	<table border="2" width="100%">  
+	<tr>  
+	<th>Student ID</th>  
+	<th>First Name</th>  
+	<th>Last Name</th>  
+	<th>Age</th>  
+	</tr>  
+	<c:forEach var="table" items="${rs.rows}">  
+	<tr>  
+	<td><c:out value="${table.id}"/></td>  
+	<td><c:out value="${table.First_Name}"/></td>  
+	<td><c:out value="${table.Last_Name}"/></td>  
+	<td><c:out value="${table.Age}"/></td>  
+	</tr>  
+	</c:forEach>  
+	</table>  
+
+	</body>  
+	</html> 
+	
+
+
+
+
+
+
+
+
 
 
 
