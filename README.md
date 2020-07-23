@@ -272,21 +272,92 @@ The JSP engine loads the JSP page from disk and converts it into a servlet conte
 
 There are four main section in JSP page:
 
-1. Directive:  
+1.  JSP Directive:  
 
 <%@ page import="java.util.Date" %> converts to import in Servlet
 
-2. Declaration:
+2. JSP Declaration:
 
 <%! int i = 0; }  converts to class variable in Servlet
 
-3. Scriptlet:
+3. JSP Scriptlet:
 
 <% int x = i %> converts into content of Servlet service method
 
-4. Expression
+4. JSP Expression
 
 <%=x%> convert into servlet out.println("x")
+
+
+## JSP Directive | Page | Include | Taglib
+
+The jsp directives are messages that tells the web container how to translate a JSP page into the corresponding servlet.  
+  
+There are three types of directives:  
+  
+page directive  
+include directive  
+taglib directive  
+
+###### @Page
+
+The page directive defines attributes that apply to an entire JSP page.  
+
+Syntax of JSP page directive  
+	
+	<%@ page attribute="value" %>  
+
+Attributes of JSP page directive
+
+* import
+* contentType
+* extends
+* info
+* buffer
+* language
+* isELIgnored
+* isThreadSafe
+* autoFlush
+* session
+* pageEncoding
+* errorPage
+* isErrorPage
+
+Like above example it is use to import package  
+
+	<%@ page import="java.util.Date" %>
+
+
+###### @Include
+Include any page(html or JSP) in JSP page
+
+	<%@ include file="index.jsp" %> 
+
+
+###### @Taglib
+
+The JSP taglib directive is used to define a tag library that defines many tags.
+
+	<%@ taglib uri="uriofthetaglibrary" prefix="prefixoftaglibrary" %>
+	
+
+## Implicit Object in JSP
+
+There are 9 jsp implicit objects. These objects are created by the web container that are available to all the jsp pages.  
+
+   Object		Type
+============================================
+1. out			JspWriter
+2. request		HttpServletRequest
+3. response		HttpServletResponse
+4. config		ServletConfig
+5. application		ServletContext
+6. session		HttpSession
+7. pageContext		PageContext
+8. page			Object
+9. exception		Throwable
+============================================
+
 
 
 
