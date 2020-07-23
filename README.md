@@ -266,6 +266,35 @@ And add @WebServlet("/nameOfServlet") annotation to the Servlet class
 * In this, Java code can be inserted in HTML/ XML pages or both.
 * JSP is first converted into servlet by JSP container before processing the client’s request.
 
+## How JSP Translated into Servlet?
+
+The JSP engine loads the JSP page from disk and converts it into a servlet content. This conversion is very simple in which all template text is converted to println() statements and all JSP elements are converted to Java code. This code implements the corresponding dynamic behavior of the page.
+
+There are four main section in JSP page:
+
+1. Directive:  
+
+<%@ page import="java.util.Date" %> converts to import in Servlet
+
+2. Declaration:
+
+<%!     
+int i = 0;  
+}  
+
+converts to class variable in Servlet
+
+3. Scriptlet:
+
+<% int x = i %> converts into content of Servlet service method
+
+4. Expression
+
+<%=x%> convert into servlet out.println("x")
+
+
+
+
 
 
 
